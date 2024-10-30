@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.example.bloc_project_empiricus",
+    "sha256_cert_fingerprints":
+    ["0C:D0:DB:61:60:55:1E:5E:BC:21:FF:1A:C2:9E:76:72:BD:02:E6:49:CA:5E:13:60:5A:B1:CA:45:54:29:E0:B9"]
+  }
+}]
