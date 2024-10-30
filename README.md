@@ -42,7 +42,7 @@ A tela apresenta os detalhes do card selecionado. Apresenta nome, imagem e descr
 ### 1) Clonando o repositório através do terminal
 
 ```
-git clone -b main https://github.com/VictorPerez3/xxxx.git
+git clone -b main https://github.com/VictorPerez3/flutter_bloc_project_.git
 ```
 
 ### 2) Configure a versão do flutter via fvm
