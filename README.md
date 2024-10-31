@@ -7,6 +7,7 @@
 - Aplicativo criado em flutter para dispositivos Android e IOS.
 - Arquitetura BLOC
 - Camada de Testes Unitários
+- DeepLinking
 - FVM - Gerenciamento de versões Flutter
 - Autenticação mockada.
 - Listagem de cards e detalhes.
@@ -28,12 +29,12 @@ Pagina de autenticação mock, onde inclui:
   <img src="https://github.com/VictorPerez3/flutter_bloc_project_/blob/main/prints-doc/login_validator.jpg" alt="Login Validator" width="200"/>
 </div>
 
-### 2) Home Screen 📋
+### 3) Home Screen 📋
 A tela apresenta uma lista CRUD de cards com nome, imagem e descrição.
 
 <img src="https://github.com/VictorPerez3/flutter_bloc_project_/blob/main/prints-doc/home_screen.jpg" alt="Home Screen" width="200"/>
 
-### 3) Details Screen 🗒️
+### 4) Details Screen 🗒️
 A tela apresenta os detalhes do card selecionado. Apresenta nome, imagem e descrição.
 
 <img src="https://github.com/VictorPerez3/flutter_bloc_project_/blob/main/prints-doc/details_screen.jpg" alt="Details Screen" width="200"/>
@@ -57,7 +58,7 @@ fvm use 3.22.0
 fvm flutter pub get 
 ```
 
-### 3) Execute o projeto
+### 4) Execute o projeto
 
 ```
 fvm flutter run
@@ -67,4 +68,15 @@ fvm flutter run
 
 ```
 fvm flutter test
+```
+
+# 5 - Deep Links Android 🛜
+Para acessar a tela requerida, utilize os comandos abaixo no terminal bash.
+- Home Screen:
+```
+adb shell am start -W -a android.intent.action.VIEW -d "https://victorperez3.github.io/flutter_bloc_project_/.well-known/home" com.example.bloc_project_empiricus
+```
+- Details Screen:
+```
+adb shell am start -W -a android.intent.action.VIEW -d "https://victorperez3.github.io/flutter_bloc_project_/.well-known/details/2" com.example.bloc_project_empiricus
 ```
