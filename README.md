@@ -20,7 +20,7 @@
 
 ### 2) Login Screen 🔒
 Pagina de autenticação mock, onde inclui:
-1. Usuário: teste.
+1. Usuário: teste
 2. Senha: senha
 2. Validação e tratamento de erros.
 
