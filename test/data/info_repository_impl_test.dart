@@ -13,7 +13,7 @@ void main() {
       repository = InfoRepositoryImpl();
     });
 
-    test('Analisando parse data', () {
+    test('Analisando decodeResponse e parseInfoList', () {
       const responseJson = '''
       {
         "groups": [
@@ -50,6 +50,52 @@ void main() {
       } catch (e) {
         expect(e, isA<ServerException>());
       }
+    });
+
+    test('Retorna o índice correto para um ID valido', () {
+      const id = '1';
+      const listLength = 5;
+      final index = repository.getIndexFromId(id, listLength);
+
+      expect(index, 0);
+    });
+
+    test('Retorna o índice correto para um ID valido no limite', () {
+      const id = '5';
+      const listLength = 5;
+      final index = repository.getIndexFromId(id, listLength);
+
+      expect(index, 4);
+    });
+
+    test('Lança exception para ID abaixo do intervalo', () {
+      const id = '0';
+      const listLength = 5;
+
+      expect(
+            () => repository.getIndexFromId(id, listLength),
+        throwsA(isA<Exception>()),
+      );
+    });
+
+    test('Lança exception para ID acima do intervalo', () {
+      const id = '6';
+      const listLength = 5;
+
+      expect(
+            () => repository.getIndexFromId(id, listLength),
+        throwsA(isA<Exception>()),
+      );
+    });
+
+    test('Lança exception para ID como string', () {
+      const id = 'abc';
+      const listLength = 5;
+
+      expect(
+            () => repository.getIndexFromId(id, listLength),
+        throwsA(isA<Exception>()),
+      );
     });
   });
 }

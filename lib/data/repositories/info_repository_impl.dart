@@ -30,7 +30,7 @@ class InfoRepositoryImpl implements InfoRepository {
     try {
       final response = await _getDataFromApi(apiUrl);
       final data = _decodeResponse(response);
-      final index = _getIndexFromId(id, data['groups'].length);
+      final index = getIndexFromId(id, data['groups'].length);
 
       return InfoModel.fromJson(data['groups'][index]);
     } on SocketException {
@@ -52,7 +52,7 @@ class InfoRepositoryImpl implements InfoRepository {
     return json.decode(utf8.decode(response.bodyBytes));
   }
 
-  int _getIndexFromId(String id, int listLength) {
+  int getIndexFromId(String id, int listLength) {
     final index = int.tryParse(id) ?? -1;
     if (index < 1 || index > listLength) {
       throw Exception(AppStrings.idNotFoundExceptionMessage);

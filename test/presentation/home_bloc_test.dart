@@ -20,13 +20,16 @@ class FakeInfoRepository implements InfoRepository {
     ];
   }
 
-  @override
   Future<http.Response> getDataFromApi(String url) async {
     throw UnimplementedError();
   }
 
-  @override
   List<Info> parseInfoList(http.Response response) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Info> fetchInfoById(String id) {
     throw UnimplementedError();
   }
 }
