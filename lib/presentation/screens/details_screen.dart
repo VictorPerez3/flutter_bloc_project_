@@ -1,14 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/entities/info.dart';
+import '../blocs/details/details_bloc.dart';
+import '../blocs/details/details_event.dart';
+import '../blocs/details/details_state.dart';
+import '../../data/repositories/info_repository_impl.dart';
 import 'package:go_router/go_router.dart';
+import '../widgets/custom_snackbar.dart';
 
 class DetailsScreen extends StatelessWidget {
-  final Info infoCard;
+  final String id;
 
-  const DetailsScreen({super.key, required this.infoCard});
+  const DetailsScreen({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => DetailsBloc(
+        repository: InfoRepositoryImpl(),
+      )..add(FetchInfoByIdEvent(id)),
+      child: BlocConsumer<DetailsBloc, DetailsState>(
+        listener: (context, state) {
+          if (state is DetailsError) {
+            CustomSnackBar.show(context, state.message);
+            context.go('/');
+          }
+        },
+        builder: (context, state) {
+          if (state is DetailsLoading) {
+            return const Scaffold(
+              backgroundColor: Color(0xFFEFEAEA),
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          } else if (state is DetailsLoaded) {
+            return _detailsContent(state.info, context);
+          } else {
+            return const SizedBox.shrink();
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _detailsContent(Info infoCard, BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFEFEAEA),
       appBar: AppBar(

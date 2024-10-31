@@ -2,7 +2,6 @@ import 'package:go_router/go_router.dart';
 import '../presentation/screens/login_screen.dart';
 import '../presentation/screens/home_screen.dart';
 import '../presentation/screens/details_screen.dart';
-import '../../../domain/entities/info.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/',
@@ -21,9 +20,20 @@ final GoRouter router = GoRouter(
       path: '/details/:id',
       name: 'details',
       builder: (context, state) {
-        final infoCard = state.extra as Info;
-        return DetailsScreen(infoCard: infoCard);
+        final id = state.pathParameters['id']!;
+        return DetailsScreen(id: id);
       },
     ),
   ],
+  redirect: (context, state) {
+    final location = state.uri.toString();
+    if (location.contains('/.well-known/home')) {
+      return '/home';
+    }
+    if (location.contains('/.well-known/details')) {
+      final id = location.split('/').last;
+      return '/details/$id';
+    }
+    return null;
+  },
 );

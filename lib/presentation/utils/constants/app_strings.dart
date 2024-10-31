@@ -22,4 +22,5 @@ class AppStrings {
   // Exceptions
   static const String networkExceptionMessage = 'Sem conexão com a internet.';
   static const String serverExceptionMessage = 'Falha na captação de dados pelo servidor.';
+  static const String idNotFoundExceptionMessage = 'Item da lista não encontrado.';
 }
