@@ -22,7 +22,7 @@
 Pagina de autenticação mock, onde inclui:
 1. Usuário: teste
 2. Senha: senha
-2. Validação e tratamento de erros.
+3. Validação e tratamento de erros.
 
 <div style="display: flex; gap: 10px;">
   <img src="https://github.com/VictorPerez3/flutter_bloc_project_/blob/main/prints-doc/login_screen.jpg" alt="Login Screen" width="200"/>
