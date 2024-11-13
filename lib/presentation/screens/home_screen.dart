@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
         final infoCard = state.allInfo[index];
         return GestureDetector(
           onTap: () {
-            context.go('/details/${index + 1}', extra: infoCard);
+            context.go('/details/$index', extra: infoCard);
           },
           child: Padding(
             padding:

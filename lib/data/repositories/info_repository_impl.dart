@@ -54,10 +54,10 @@ class InfoRepositoryImpl implements InfoRepository {
 
   int getIndexFromId(String id, int listLength) {
     final index = int.tryParse(id) ?? -1;
-    if (index < 1 || index > listLength) {
+    if (index! < 0 || index > listLength) {
       throw Exception(AppStrings.idNotFoundExceptionMessage);
     }
-    return index - 1;
+    return index;
   }
 
   List<Info> parseInfoList(http.Response response) {
