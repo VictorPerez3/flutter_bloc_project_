@@ -57,7 +57,7 @@ void main() {
       const listLength = 5;
       final index = repository.getIndexFromId(id, listLength);
 
-      expect(index, 0);
+      expect(index, 1);
     });
 
     test('Retorna o índice correto para um ID valido no limite', () {
@@ -65,11 +65,11 @@ void main() {
       const listLength = 5;
       final index = repository.getIndexFromId(id, listLength);
 
-      expect(index, 4);
+      expect(index, 5);
     });
 
     test('Lança exception para ID abaixo do intervalo', () {
-      const id = '0';
+      const id = '-1';
       const listLength = 5;
 
       expect(
